@@ -1,0 +1,12 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t hmdrzadev/docker-react -f Dockerfile.dev .
+
+scripts:
+  - docker run -e CI=true hmdrzadev/docker-react yarn test
+
+language: generic
